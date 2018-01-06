@@ -1,0 +1,79 @@
+0 info it worked if it ends with ok
+1 verbose cli [ 'C:\\Program Files\\nodejs\\node.exe',
+1 verbose cli   'C:\\ProgramData\\chocolatey\\lib\\npm\\tools\\node_modules\\npm\\bin\\npm-cli.js',
+1 verbose cli   'install',
+1 verbose cli   '-g',
+1 verbose cli   '@types/node' ]
+2 info using npm@1.4.9
+3 info using node@v8.1.4
+4 verbose cache add [ '@types/node', null ]
+5 verbose cache add name=undefined spec="@types/node" args=["@types/node",null]
+6 verbose parsed url Url {
+6 verbose parsed url   protocol: null,
+6 verbose parsed url   slashes: null,
+6 verbose parsed url   auth: null,
+6 verbose parsed url   host: null,
+6 verbose parsed url   port: null,
+6 verbose parsed url   hostname: null,
+6 verbose parsed url   hash: null,
+6 verbose parsed url   search: null,
+6 verbose parsed url   query: null,
+6 verbose parsed url   pathname: '@types/node',
+6 verbose parsed url   path: '@types/node',
+6 verbose parsed url   href: '@types/node' }
+7 verbose cache add name="" spec="types/node" args=["","types/node"]
+8 verbose parsed url Url {
+8 verbose parsed url   protocol: null,
+8 verbose parsed url   slashes: null,
+8 verbose parsed url   auth: null,
+8 verbose parsed url   host: null,
+8 verbose parsed url   port: null,
+8 verbose parsed url   hostname: null,
+8 verbose parsed url   hash: null,
+8 verbose parsed url   search: null,
+8 verbose parsed url   query: null,
+8 verbose parsed url   pathname: 'types/node',
+8 verbose parsed url   path: 'types/node',
+8 verbose parsed url   href: 'types/node' }
+9 silly lockFile 6134932f-types-node types/node
+10 verbose lock types/node C:\Users\zhiayang\AppData\Roaming\npm-cache\6134932f-types-node.lock
+11 info maybeGithub Attempting types/node from git://github.com/types/node
+12 silly lockFile 4f2f4dc3-git-github-com-types-node git://github.com/types/node
+13 verbose lock git://github.com/types/node C:\Users\zhiayang\AppData\Roaming\npm-cache\4f2f4dc3-git-github-com-types-node.lock
+14 verbose addRemoteGit [ 'git://github.com/types/node', 'master' ]
+15 warn `git config --get remote.origin.url` returned wrong result (git://github.com/types/node)
+16 verbose git clone git://github.com/types/node Cloning into bare repository 'C:\Users\zhiayang\AppData\Roaming\npm-cache\_git-remotes\git-github-com-types-node-4f2f4dc3'...
+16 verbose git clone git://github.com/types/node fatal: remote error:
+16 verbose git clone git://github.com/types/node   Repository not found.
+17 silly lockFile 4f2f4dc3-git-github-com-types-node git://github.com/types/node
+18 silly lockFile 4f2f4dc3-git-github-com-types-node git://github.com/types/node
+19 info maybeGithub Attempting types/node from git+ssh://git@github.com:types/node
+20 silly lockFile 921b5735-git-github-com-types-node git@github.com:types/node
+21 verbose lock git@github.com:types/node C:\Users\zhiayang\AppData\Roaming\npm-cache\921b5735-git-github-com-types-node.lock
+22 verbose addRemoteGit [ 'git@github.com:types/node', 'master' ]
+23 warn `git config --get remote.origin.url` returned wrong result (git@github.com:types/node)
+24 error git clone git@github.com:types/node Cloning into bare repository 'C:\Users\zhiayang\AppData\Roaming\npm-cache\_git-remotes\git-github-com-types-node-921b5735'...
+24 error git clone git@github.com:types/node Host key verification failed.
+24 error git clone git@github.com:types/node fatal: Could not read from remote repository.
+24 error git clone git@github.com:types/node
+24 error git clone git@github.com:types/node Please make sure you have the correct access rights
+24 error git clone git@github.com:types/node and the repository exists.
+25 silly lockFile 921b5735-git-github-com-types-node git@github.com:types/node
+26 silly lockFile 921b5735-git-github-com-types-node git@github.com:types/node
+27 silly lockFile 6134932f-types-node types/node
+28 silly lockFile 6134932f-types-node types/node
+29 error addLocal Could not install types/node
+30 error Error: ENOENT: no such file or directory, stat 'D:\Projects\tabindentspacealign\types\node'
+31 error If you need help, you may report this *entire* log,
+31 error including the npm and node versions, at:
+31 error     <http://github.com/npm/npm/issues>
+32 error System Windows_NT 10.0.16299
+33 error command "C:\\Program Files\\nodejs\\node.exe" "C:\\ProgramData\\chocolatey\\lib\\npm\\tools\\node_modules\\npm\\bin\\npm-cli.js" "install" "-g" "@types/node"
+34 error cwd D:\Projects\tabindentspacealign
+35 error node -v v8.1.4
+36 error npm -v 1.4.9
+37 error path D:\Projects\tabindentspacealign\types\node
+38 error syscall stat
+39 error code ENOENT
+40 error errno -4058
+41 verbose exit [ -4058, true ]
