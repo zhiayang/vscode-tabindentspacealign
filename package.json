@@ -2,7 +2,7 @@
     "name": "tabindentspacealign",
     "displayName": "Dynamic Tab Insertion",
     "description": "Dynamically insert spaces or tabs depending on the action (indentation or alignment)",
-    "version": "1.1.0",
+    "version": "1.0.2",
     "publisher": "zhiayang",
     "repository": {
         "url": "https://github.com/zhiayang/tabindentspacealign",
@@ -15,7 +15,7 @@
         "Other"
     ],
     "activationEvents": [
-        "onCommand:extension.dynamictabkey"
+        "*"
     ],
     "main": "./out/extension",
     "contributes": {
