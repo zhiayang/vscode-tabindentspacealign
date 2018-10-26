@@ -1,7 +1,17 @@
-# Change Log
-All notable changes to the "tabindentspacealign" extension will be documented in this file.
+## Release Notes
 
-Check [Keep a Changelog](http://keepachangelog.com/) for recommendations on how to structure this file.
+### 1.1.0
 
-## [Unreleased]
-- Initial release
+Fix a pretty big bug where we weren't respecting the `insertSpaces` option (only found out after all the YAML files broke)
+
+### 1.0.3
+
+Update repository url
+
+### 1.0.1
+
+Name change
+
+### 1.0.0
+
+Initial release

@@ -19,17 +19,3 @@ There are no options to configure, but this plugin adds a keybinding to the 'tab
 
 1. Not really an issue, but there might be a slight performance impact since VS Code offers no builtin method to get the *column* that the cursor is at,
 rather only the character index.
-
-## Release Notes
-
-### 1.0.3
-
-Update repository url
-
-### 1.0.1
-
-Name change
-
-### 1.0.0
-
-Initial release
