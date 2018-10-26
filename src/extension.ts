@@ -15,9 +15,6 @@ export function activate(context: ExtensionContext)
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
 
-	if(window.activeTextEditor && window.activeTextEditor.options.insertSpaces)
-		return;
-
 	let disposable = commands.registerCommand('extension.dynamictabkey', () => {
 		// The code you place here will be executed every time your command is executed
 
@@ -31,22 +28,35 @@ export function activate(context: ExtensionContext)
 		let curline = doc.lineAt(cursorpos);
 		let k = curline.firstNonWhitespaceCharacterIndex;
 
+		// insert spaces
+		let tabsz = (editor.options.tabSize as number);
+
 		// if the first non-whitespace character is after the cursor position, then we insert tabs
 		if(k >= cursorpos.character)
 		{
-			// insert a tab
-			editor.edit((eb: TextEditorEdit) => {
-				editor.selections.forEach(it => {
-					eb.delete(it);
-					eb.insert(it.start, '\t');
+			if(editor.options.insertSpaces)
+			{
+				// insert a tab
+				editor.edit((eb: TextEditorEdit) => {
+					editor.selections.forEach(it => {
+						eb.delete(it);
+						eb.insert(it.start, ' '.repeat(tabsz));
+					});
 				});
-			});
+			}
+			else
+			{
+				// insert a tab
+				editor.edit((eb: TextEditorEdit) => {
+					editor.selections.forEach(it => {
+						eb.delete(it);
+						eb.insert(it.start, '\t');
+					});
+				});
+			}
 		}
 		else
 		{
-			// insert spaces
-			let tabsz = (editor.options.tabSize as number);
-
 			editor.edit((eb: TextEditorEdit) => {
 				editor.selections.forEach(it => {
 					eb.delete(it);

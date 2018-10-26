@@ -22,6 +22,10 @@ rather only the character index.
 
 ## Release Notes
 
+### 1.0.3
+
+Update repository url
+
 ### 1.0.1
 
 Name change
