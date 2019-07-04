@@ -7,10 +7,6 @@ import { window, commands, Disposable, TextDocument, ExtensionContext, TextEdito
 // your extension is activated the very first time the command is executed
 export function activate(context: ExtensionContext)
 {
-	// Use the console to output diagnostic information (console.log) and errors (console.error)
-	// This line of code will only be executed once when your extension is activated
-	console.log('tabindentspacealign plugin active');
-
 	// The command has been defined in the package.json file
 	// Now provide the implementation of the command with  registerCommand
 	// The commandId parameter must match the command field in package.json
@@ -36,7 +32,7 @@ export function activate(context: ExtensionContext)
 		{
 			if(editor.options.insertSpaces)
 			{
-				// insert a tab
+				// insert a tab (but the user uses spaces, so just use spaces)
 				editor.edit((eb: TextEditorEdit) => {
 					editor.selections.forEach(it => {
 						eb.delete(it);
@@ -46,7 +42,7 @@ export function activate(context: ExtensionContext)
 			}
 			else
 			{
-				// insert a tab
+				// insert an actual tab
 				editor.edit((eb: TextEditorEdit) => {
 					editor.selections.forEach(it => {
 						eb.delete(it);
@@ -66,7 +62,7 @@ export function activate(context: ExtensionContext)
 					let cursor = 0;
 					for (let idx = 0; idx <= it.start.character; idx++)
 					{
-						if(line[idx] == '\t') cursor += tabsz;
+						if(line[idx] == '\t') cursor += (cursor % tabsz);
 						else                  cursor++;
 					}
 
