@@ -1,7 +1,7 @@
 'use strict';
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
-import { window, commands, Disposable, TextDocument, ExtensionContext, TextEditorEdit } from 'vscode';
+import { window, commands, Disposable, TextDocument, ExtensionContext, TextEditorEdit, workspace } from 'vscode';
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -26,6 +26,13 @@ export function activate(context: ExtensionContext)
 
 		// insert spaces
 		let tabsz = (editor.options.tabSize as number);
+		let indentCount = 1;
+
+		if(workspace.getConfiguration("dynamictab").get<boolean>("indentBasedOnPrecedingLine") && curline.lineNumber > 0)
+		{
+			let prevLine = doc.lineAt(curline.lineNumber - 1);
+			indentCount = Math.max(1, prevLine.firstNonWhitespaceCharacterIndex);
+		}
 
 		// if the first non-whitespace character is after the cursor position, then we insert tabs
 		if(k >= cursorpos.character)
@@ -36,7 +43,7 @@ export function activate(context: ExtensionContext)
 				editor.edit((eb: TextEditorEdit) => {
 					editor.selections.forEach(it => {
 						eb.delete(it);
-						eb.insert(it.start, ' '.repeat(tabsz));
+						eb.insert(it.start, ' '.repeat(tabsz).repeat(indentCount));
 					});
 				});
 			}
@@ -46,7 +53,7 @@ export function activate(context: ExtensionContext)
 				editor.edit((eb: TextEditorEdit) => {
 					editor.selections.forEach(it => {
 						eb.delete(it);
-						eb.insert(it.start, '\t');
+						eb.insert(it.start, '\t'.repeat(indentCount));
 					});
 				});
 			}

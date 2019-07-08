@@ -1,5 +1,10 @@
 ## Release Notes
 
+### 1.2.0
+
+Add a feature (controlled by `dynamictab.indentBasedOnPrecedingLine`) that inserts the appropriate number of tabs (spaces or tab literals) based on the preceding line. Disabled by default.
+
+
 ### 1.1.2
 
 Fix a bug where the wrong number of spaces would get inserted if there were tab characters after a non-whitespace char (ie. you used tabs to align prior to using this plugin)
