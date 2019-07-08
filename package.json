@@ -2,7 +2,7 @@
     "name": "tabindentspacealign",
     "displayName": "Dynamic Tab Insertion",
     "description": "Dynamically insert spaces or tabs depending on the action (indentation or alignment)",
-    "version": "1.2.0",
+    "version": "1.2.1",
     "publisher": "zhiayang",
     "repository": {
         "url": "https://github.com/zhiayang/vscode-tabindentspacealign",
@@ -36,10 +36,20 @@
             {
                 "title": "Dynamic Tab Configuration",
                 "properties": {
-                    "dynamictab.indentBasedOnPrecedingLine": {
+                    "dynamicTab.indentBasedOnPrecedingLine": {
                         "type": "boolean",
                         "default": false,
                         "description": "Inserts the appropriate number of tabs/spaces to match indentation on the previous line"
+                    },
+                    "dynamicTab.numberOfPreviousLinesToSearch": {
+                        "type": "integer",
+                        "default": 0,
+                        "description": "The number of lines to search upwards if the previous line was empty (0 to disable)"
+                    },
+                    "dynamicTab.extraIndentationInsetIfLastCharacterWasBrace": {
+                        "type": "boolean",
+                        "default": true,
+                        "description": "Adds an extra level of indentation if the last character on the preceding line was an open brace '{'"
                     }
                 }
             }

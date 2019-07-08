@@ -26,17 +26,52 @@ export function activate(context: ExtensionContext)
 
 		// insert spaces
 		let tabsz = (editor.options.tabSize as number);
-		let indentCount = 1;
-
-		if(workspace.getConfiguration("dynamictab").get<boolean>("indentBasedOnPrecedingLine") && curline.lineNumber > 0)
-		{
-			let prevLine = doc.lineAt(curline.lineNumber - 1);
-			indentCount = Math.max(1, prevLine.firstNonWhitespaceCharacterIndex);
-		}
 
 		// if the first non-whitespace character is after the cursor position, then we insert tabs
 		if(k >= cursorpos.character)
 		{
+			let charactersPerTab = (editor.options.insertSpaces ? tabsz : 1);
+			let indentCount = 1;
+
+			if(workspace.getConfiguration("dynamicTab").get<boolean>("indentBasedOnPrecedingLine") && curline.lineNumber > 0)
+			{
+				let ctr = 0;
+				let ln = curline.lineNumber - 1;
+
+				// this might possibly be #not-so-good for performance?
+				while(ln >= 0)
+				{
+					let prevLine = doc.lineAt(ln);
+					let currCharIdx = cursorpos.character / charactersPerTab;
+					let prevFNWSCI = prevLine.firstNonWhitespaceCharacterIndex / charactersPerTab;
+
+					if(prevLine.text.length > 0)
+					{
+						indentCount = Math.max(1, prevFNWSCI - currCharIdx);
+
+						if(workspace.getConfiguration("dynamicTab").get<boolean>("extraIndentationInsetIfLastCharacterWasBrace")
+							&& prevLine.text.endsWith("{") && prevFNWSCI > currCharIdx)
+						{
+							indentCount++;
+						}
+
+						break;
+					}
+					else
+					{
+						if(ctr <= workspace.getConfiguration("dynamicTab").get<number>("numberOfPreviousLinesToSearch"))
+						{
+							ln -= 1;
+							ctr++;
+						}
+						else
+						{
+							break;
+						}
+					}
+				}
+			}
+
 			if(editor.options.insertSpaces)
 			{
 				// insert a tab (but the user uses spaces, so just use spaces)

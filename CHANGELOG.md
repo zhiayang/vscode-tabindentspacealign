@@ -1,9 +1,12 @@
 ## Release Notes
 
+### 1.2.1
+
+Add a feature to additionally inset the indentation by one more level when the previous line ends with a `{`.
+
 ### 1.2.0
 
 Add a feature (controlled by `dynamictab.indentBasedOnPrecedingLine`) that inserts the appropriate number of tabs (spaces or tab literals) based on the preceding line. Disabled by default.
-
 
 ### 1.1.2
 

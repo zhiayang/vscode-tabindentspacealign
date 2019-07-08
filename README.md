@@ -5,6 +5,8 @@ this is the plugin for you!
 
 ## Features
 
+
+### Tabs to indent, spaces to align
 If your 'tab' key inserts spaces, then this plugin will not do anything. Otherwise, when pressing the 'tab' key:
 
 1. Before a non-whitespace character appears on a line (ie. indentation), the tab literal is inserted.
@@ -13,6 +15,12 @@ If your 'tab' key inserts spaces, then this plugin will not do anything. Otherwi
 The spaces inserted will align you to the nearest tab stop, based on your preferred tab size.
 
 There are no options to configure, but this plugin adds a keybinding to the 'tab' key in the editor.
+
+
+### 'Smart' indentation
+New since version 1.2.0, there is an option (`dynamictab.indentBasedOnPrecedingLine`, OFF by default) that matches the indentation of previous lines when the tab key is pressed, versus just inserting one single 'Tab Unit' (regardless of spaces or literal tabs).
+
+Since version 1.2.1, the upwards search continues till the first non-empty line is found, for a configurable number of lines.
 
 
 ## Known Issues
