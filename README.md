@@ -1,7 +1,8 @@
 # Dynamic Tab Insertion
 
-This extension augments the functionality of the 'tab' key. If you're the kind of person to use tabs for indentations and spaces for alignment, then
-this is the plugin for you!
+This extension augments the functionality of the 'tab' key. If you're the kind of person to use tabs for indentations and spaces for alignment, then this is the plugin for you!
+
+Note: sublime text 3 version available here: https://github.com/zhiayang/sublimetext-dynamictabs
 
 ## Features
 
