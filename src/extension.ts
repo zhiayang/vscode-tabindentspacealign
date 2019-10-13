@@ -27,19 +27,23 @@ export function activate(context: ExtensionContext)
 		// insert spaces
 		let tabsz = (editor.options.tabSize as number);
 
+		let indentBasedOnPrecedingLine          = workspace.getConfiguration("dynamicTab").get<boolean>("indentBasedOnPrecedingLine");
+		let extraInsetIfLastCharacterWasBrace   = workspace.getConfiguration("dynamicTab").get<boolean>("extraIndentationInsetIfLastCharacterWasBrace");
+		let numberOfPreviousLinesToSearch       = workspace.getConfiguration("dynamicTab").get<number>("numberOfPreviousLinesToSearch");
+
 		// if the first non-whitespace character is after the cursor position, then we insert tabs
 		if(k >= cursorpos.character)
 		{
 			let charactersPerTab = (editor.options.insertSpaces ? tabsz : 1);
 			let indentCount = 1;
 
-			if(workspace.getConfiguration("dynamicTab").get<boolean>("indentBasedOnPrecedingLine") && curline.lineNumber > 0)
+			if(indentBasedOnPrecedingLine && curline.lineNumber > 0)
 			{
 				let ctr = 0;
 				let ln = curline.lineNumber - 1;
 
 				// this might possibly be #not-so-good for performance?
-				while(ln >= 0)
+				while(ln >= 0 && ctr < numberOfPreviousLinesToSearch)
 				{
 					let prevLine = doc.lineAt(ln);
 					let currCharIdx = cursorpos.character / charactersPerTab;
@@ -49,8 +53,7 @@ export function activate(context: ExtensionContext)
 					{
 						indentCount = Math.max(1, prevFNWSCI - currCharIdx);
 
-						if(workspace.getConfiguration("dynamicTab").get<boolean>("extraIndentationInsetIfLastCharacterWasBrace")
-							&& prevLine.text.endsWith("{") && prevFNWSCI > currCharIdx)
+						if(extraInsetIfLastCharacterWasBrace && prevLine.text.endsWith("{") && prevFNWSCI > currCharIdx)
 						{
 							indentCount++;
 						}
@@ -59,15 +62,8 @@ export function activate(context: ExtensionContext)
 					}
 					else
 					{
-						if(ctr <= workspace.getConfiguration("dynamicTab").get<number>("numberOfPreviousLinesToSearch"))
-						{
-							ln -= 1;
-							ctr++;
-						}
-						else
-						{
-							break;
-						}
+						ln--;
+						ctr++;
 					}
 				}
 			}
