@@ -1,5 +1,9 @@
 ## Release Notes
 
+### 1.2.4
+
+Only activate when there's no selection, so you can use tab/shift+tab to indent/unindent
+
 ### 1.2.1
 
 Add a feature to additionally inset the indentation by one more level when the previous line ends with a `{`.
