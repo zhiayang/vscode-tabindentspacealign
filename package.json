@@ -29,7 +29,7 @@
             {
                 "command": "extension.dynamictabkey",
                 "key": "tab",
-                "when": "editorTextFocus && !editorReadOnly && !inSnippetMode && !editorHasSelection"
+                "when": "editorTextFocus && !editorReadOnly && !inSnippetMode && !editorHasSelection && !suggestWidgetVisible"
             }
         ],
         "configuration":[
